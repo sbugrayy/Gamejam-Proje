@@ -16,20 +16,42 @@ public class DropRateManager : MonoBehaviour
 
     void OnDestroy()
     {
-        float randomNumber = UnityEngine.Random.Range(0f, 100f);
-        List<Drops> possibleDrops = new List<Drops>();
-
-        foreach (Drops rate in drops)
+        if (gameObject.scene.isLoaded)
         {
-            if(randomNumber <= rate.dropRate)
+            float randomNumber = UnityEngine.Random.Range(0f, 100f);
+            List<Drops> possibleDrops = new List<Drops>();
+
+            foreach (Drops rate in drops)
             {
-                possibleDrops.Add(rate);
+                if (randomNumber <= rate.dropRate)
+                {
+                    possibleDrops.Add(rate);
+                }
+            }
+            if (possibleDrops.Count > 0)
+            {
+                Drops drop = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];
+                Instantiate(drop.itemPrefab, transform.position, Quaternion.identity);
             }
         }
-        if(possibleDrops.Count > 0)
-        {
-            Drops drops = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];
-            Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);
-        }
     }
+
+    //void OnDestroy()
+    //{
+    //    float randomNumber = UnityEngine.Random.Range(0f, 100f);
+    //    List<Drops> possibleDrops = new List<Drops>();
+
+    //    foreach (Drops rate in drops)
+    //    {
+    //        if(randomNumber <= rate.dropRate)
+    //        {
+    //            possibleDrops.Add(rate);
+    //        }
+    //    }
+    //    if(possibleDrops.Count > 0)
+    //    {
+    //        Drops drops = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];
+    //        Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);
+    //    }
+    //}
 }

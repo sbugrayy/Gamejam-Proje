@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public EnemyScriptableObject enemyData;
+    //public EnemyScriptableObject enemyData;
+    EnemyStats enemy;
     Transform player;
     SpriteRenderer sr;
 
     void Start()
     {
+        enemy = GetComponent<EnemyStats>();
         player = Object.FindFirstObjectByType<PlayerMovement>().transform;
         sr = GetComponent<SpriteRenderer>();
     }
@@ -15,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         // Düþmaný oyuncuya doðru hareket ettir
-        transform.position = Vector2.MoveTowards(transform.position, player.position, enemyData.MoveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.currentMoveSpeed * Time.deltaTime);
 
         // Oyuncunun konumuna göre düþmaný çevir
         if (player.position.x > transform.position.x)

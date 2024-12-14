@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4884927442797879428}
   - component: {fileID: 8788303221738767845}
   - component: {fileID: 2143485827577556696}
+  - component: {fileID: -6110459012120405485}
+  - component: {fileID: -261030461141722629}
   m_Layer: 0
   m_Name: Terrain Sprite Sheet_15
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +120,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -134,3 +136,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &-6110459012120405485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977182286559549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521e3ade41346774abf3ad457ad02f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: Red Potion
+    itemPrefab: {fileID: 3430270366638748385, guid: 9a98bc1428d6dc544a11f6c534b6d2fc, type: 3}
+    dropRate: 25
+--- !u!114 &-261030461141722629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977182286559549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad606c557185942b44f2490d44331c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10

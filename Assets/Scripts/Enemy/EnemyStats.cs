@@ -5,9 +5,12 @@ public class EnemyStats : MonoBehaviour
     public EnemyScriptableObject enemyData;
 
     //Current stats
-    float currentMoveSpeed;
-    float currentHealth;
-    float currentDamage;
+    [HideInInspector]
+    public float currentMoveSpeed;
+    [HideInInspector]
+    public float currentHealth;
+    [HideInInspector]
+    public float currentDamage;
 
     void Awake()
     {
@@ -31,9 +34,21 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Çarpýþmayý algýlar
     private void OnTriggerEnter2D(Collider2D col)
     {
-        PlayerStats player = col.gameObject.GetComponent<PlayerStats>();
-        player.TakeDamage(currentDamage);
+        if (col.CompareTag("Player"))
+        {
+            PlayerStats player = col.GetComponent<PlayerStats>();
+            if (player != null)
+            {
+                player.TakeDamage(currentDamage);
+                Debug.Log("Player took damage: " + currentDamage);
+            }
+            else
+            {
+                Debug.LogError("PlayerStats component not found!");
+            }
+        }
     }
 }

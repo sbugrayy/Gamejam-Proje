@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4248351237189995889}
   - component: {fileID: -333269693356575653}
   - component: {fileID: 8845976603872165630}
+  - component: {fileID: -778429803046201502}
   m_Layer: 0
   m_Name: Green Gem
   m_TagString: Untagged
@@ -138,3 +139,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceGranted: 100
+--- !u!50 &-778429803046201502
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100799603455089151}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
