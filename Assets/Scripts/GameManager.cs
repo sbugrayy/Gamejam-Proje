@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,21 @@ public class GameManager : MonoBehaviour
     }
     public GameState currentState;
     public GameState previousState;
+
+    //[Header("Screens")]
+
+    //[Header("Current Stat Displays")]
+
+    [Header("Results Screen Displays")]
+    public Image chosenCharacterImage;
+    public Text chosenCharacterName;
+    public Text levelReachedDisplay;
+    public Text timeSurvivedDisplay;
+
+    [Header("Stopwatch")]
+    public float timeLimit;
+    float stopwatchTime;
+    public Text stopwatchDisplay;
 
     [Header("UI")]
     public GameObject pauseScreen;
@@ -50,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Gameplay:
                 CheckForPauseAndResume();
+                UpdateStopwatch();
                 break;
             case GameState.Paused:
                 CheckForPauseAndResume();
@@ -120,11 +137,38 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        //Hatalý kod olabilir
+        timeSurvivedDisplay.text = stopwatchDisplay.text;
         ChangeState(GameState.GameOver);
     }
 
     void DisplayResults()
     {
         resultsScreen.SetActive(true);
+    }
+
+    public void AssignLevelReachedUI(int levelReachedData)
+    {
+        levelReachedDisplay.text = levelReachedData.ToString();
+    }
+
+    void UpdateStopwatch()
+    {
+        stopwatchTime += Time.deltaTime;
+
+        UpdateStopwatchDisplay();
+
+        if (stopwatchTime >= timeLimit)
+        {
+            GameOver();
+        }
+    }
+
+    void UpdateStopwatchDisplay()
+    {
+        int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+
+        stopwatchDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
