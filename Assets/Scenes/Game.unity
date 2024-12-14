@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlySpawner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -252,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlySpawner (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
@@ -312,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214672738}
   - component: {fileID: 214672739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e1dc99811129240b2c3c6b5afc47c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  rotationSpeed: 2
 --- !u!1001 &293624504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -604,7 +612,7 @@ GameObject:
   - component: {fileID: 572292548}
   - component: {fileID: 572292550}
   - component: {fileID: 572292549}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,6 +779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlySpawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
@@ -832,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_Name
       value: FlySpawner (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -980,7 +996,7 @@ GameObject:
   - component: {fileID: 1318389798}
   - component: {fileID: 1318389797}
   - component: {fileID: 1318389799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1308,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlySpawner (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -1480,6 +1500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlySpawner (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18
@@ -1540,7 +1564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605442520}
   - component: {fileID: 1605442521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KnifeController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1586,6 +1610,10 @@ PrefabInstance:
     - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_Name
       value: FlySpawner (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1757,6 +1785,10 @@ PrefabInstance:
     - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_Name
       value: FlySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368404249733844456, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
       propertyPath: m_LocalPosition.x
