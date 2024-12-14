@@ -176,7 +176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select Terlikci
+  m_text: 'Select Terlikci
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -45.948296, y: 0, z: -47.384186, w: 0}
+  m_margin: {x: -28.695312, y: 0, z: -25.468231, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -635,7 +637,7 @@ GameObject:
   - component: {fileID: 1877853574}
   - component: {fileID: 1877853575}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Select Terlikci
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,22 +719,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1511713748}
-        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
-        m_MethodName: SelectCharacter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 78d37961ef1592a478f5cdd563656c44, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CharacterScriptableObject, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: SceneChange
-        m_Mode: 5
+      - m_Target: {fileID: 1877853577}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: OnButtonPress
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -741,13 +731,13 @@ MonoBehaviour:
           m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1877853577}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: OnButtonPress
-        m_Mode: 1
+      - m_Target: {fileID: 1511713748}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 78d37961ef1592a478f5cdd563656c44, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CharacterScriptableObject, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -806,8 +796,6 @@ MonoBehaviour:
   buttonImage: {fileID: 1877853571}
   sprites:
   - {fileID: -3130853221596394083, guid: 4cc8c151ac6d075469ad8d6459de1855, type: 3}
-  audioSource: {fileID: 1877853574}
-  clickSound: {fileID: 0}
 --- !u!82 &1877853574
 AudioSource:
   m_ObjectHideFlags: 0

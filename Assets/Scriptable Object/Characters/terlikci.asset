@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 193e0e2a33112f94aa9fe3c00ea5886d, type: 3}
-  m_Name: terlikci
+  m_Name: Terlikci
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 2598604583169917618, guid: 0f9b2c1747d61fa4d83b25974ef80036, type: 3}
   maxHealth: 1000
   recovery: 1
   moveSpeed: 5

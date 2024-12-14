@@ -16,5 +16,7 @@ public class SceneLoader : MonoBehaviour
     }
     //Used in invoke
     private void LoadScene()
-        => SceneManager.LoadScene("Game");
+    {
+        SceneManager.LoadScene("Game");
+    }
 }
