@@ -30,7 +30,7 @@ public class CharacterSelector : MonoBehaviour
         characterData = character;
     }
 
-    // Singleton'ý sýfýrlar ve objeyi yok eder
+    //Singleton'ý sýfýrlar ve objeyi yok eder
     public void DestroySingleton()
     {
         instance = null;
