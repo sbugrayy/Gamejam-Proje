@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
     EnemyStats enemy;
     Transform player;
     SpriteRenderer sr;
+    Vector2 knockbackVelocity;
+    float knockbackDuration;
 
     void Start()
     {
@@ -28,5 +30,16 @@ public class EnemyMovement : MonoBehaviour
         {
             sr.flipX = false; // Sað tarafa bak
         }
+    }
+    
+    //knocback method
+    public void Knockback(Vector2 velocity, float duration)
+    {
+        if (knockbackDuration > 0)
+        {
+            return;
+        }
+        knockbackVelocity = velocity;
+        knockbackDuration = duration;
     }
 }

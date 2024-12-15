@@ -1,4 +1,4 @@
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 
 // <summary>
@@ -84,7 +84,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             EnemyStats enemy = col.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
+            enemy.TakeDamage(currentDamage, transform);
             ReducePierce();
         }
         else if(col.CompareTag("Prop"))

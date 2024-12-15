@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlyPrefab: {fileID: 1319846454365871066, guid: f84e3f3dece267247bf7718228db5036, type: 3}
-  _minimumTime: 2
-  _maximumTime: 7
+  _minimumTime: 0.1
+  _maximumTime: 2
