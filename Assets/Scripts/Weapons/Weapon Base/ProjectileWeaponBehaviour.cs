@@ -84,17 +84,35 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             EnemyStats enemy = col.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
-            ReducePierce();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(currentDamage, transform);
+                ReducePierce();
+            }
         }
-        else if(col.CompareTag("Prop"))
+        else if (col.CompareTag("Prop"))
         {
-            if(col.gameObject.TryGetComponent(out BreakableProps breakable))
+            if (col.TryGetComponent(out BreakableProps breakable))
             {
                 breakable.TakeDamage(currentDamage);
                 ReducePierce();
             }
         }
+
+        //if (col.CompareTag("Enemy"))
+        //{
+        //    EnemyStats enemy = col.GetComponent<EnemyStats>();
+        //    enemy.TakeDamage(currentDamage, transform);
+        //    ReducePierce();
+        //}
+        //else if(col.CompareTag("Prop"))
+        //{
+        //    if(col.gameObject.TryGetComponent(out BreakableProps breakable))
+        //    {
+        //        breakable.TakeDamage(currentDamage);
+        //        ReducePierce();
+        //    }
+        //}
     }
 
     void ReducePierce()

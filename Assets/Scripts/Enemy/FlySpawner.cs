@@ -2,33 +2,42 @@ using UnityEngine;
 
 public class FlySpawner : MonoBehaviour
 {
-
     [SerializeField]
-    private GameObject FlyPrefab;
+    private GameObject FlyPrefab; // Düþman prefab'ý
     [SerializeField]
-    private float _minimumTime;
+    private float _minimumTime; // Minumum spawn süresi
     [SerializeField]
-    private float _maximumTime;
+    private float _maximumTime; // Maksimum spawn süresi
     private float timeUntilSpawn;
 
+    public GameObject currentEnemy; // Þu anki düþman
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private TerlikController enemyTargeting; // EnemyTargeting referansý
+
     void Start()
     {
+        // EnemyTargeting referansýný bul
+        enemyTargeting = FindObjectOfType<TerlikController>();
+
         SetTimeUntilSpawn();
     }
 
-    // Update is called once per frame 
     void Update()
     {
         timeUntilSpawn -= Time.deltaTime;
+
         if (timeUntilSpawn <= 0)
         {
-            Instantiate(FlyPrefab, transform.position, Quaternion.identity);
-            //Instantiate(FlyPrefab);
+            // Yeni düþman spawn et
+            currentEnemy = Instantiate(FlyPrefab, transform.position, Quaternion.identity);
+
+            // Düþmaný EnemyTargeting'e bildir
+            enemyTargeting.AddEnemy(currentEnemy.transform);
+
             SetTimeUntilSpawn();
         }
     }
+
     private void SetTimeUntilSpawn()
     {
         timeUntilSpawn = Random.Range(_minimumTime, _maximumTime);

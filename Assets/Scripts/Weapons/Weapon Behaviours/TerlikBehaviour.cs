@@ -9,6 +9,9 @@ public class TerlikBehaviour : ProjectileWeaponBehaviour
 
     void Update()
     {
-        transform.position += direction * currentSpeed * Time.deltaTime;
+        if (direction != Vector3.zero)
+        {
+            transform.position += direction * currentSpeed * Time.deltaTime;
+        }
     }
 }
