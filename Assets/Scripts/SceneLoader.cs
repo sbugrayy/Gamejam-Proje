@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
     AudioSource audioSource;
     private void Awake()
     {
+        Time.timeScale = 1f;
         audioSource = gameObject.GetComponent<AudioSource>();
     }
     public void OnButtonPress()

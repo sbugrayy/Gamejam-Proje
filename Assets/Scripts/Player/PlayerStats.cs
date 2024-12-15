@@ -4,6 +4,24 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// //////////////////// level için eklenen kýsým
+/// </summary>
+
+[System.Serializable]
+public class PassiveItemData
+{
+    public string Name;
+    public int Level;
+    public int MaxLevel;
+    public float BaseValue;
+    public float Increment;
+}
+
+/// <summary>
+/// ///////////////////////// level için eklenen kýsým
+/// </summary>
+
 public class PlayerStats : MonoBehaviour
 {
     public CharacterScriptableObject characterData;
@@ -268,4 +286,44 @@ public class PlayerStats : MonoBehaviour
         spawnedWeapon.transform.SetParent(transform);
         spawnedWeapons.Add(spawnedWeapon);
     }
+
+    /// <summary>
+    /// /////////////////////// level için eklenen kýsým
+    /// </summary>
+
+    public List<PassiveItemData> passiveItems;
+
+    public void LevelUpPassiveItem(string itemName)
+    {
+        PassiveItemData item = passiveItems.Find(i => i.Name == itemName);
+        if (item != null && item.Level < item.MaxLevel)
+        {
+            item.Level++;
+            ApplyPassiveEffect(item);
+        }
+    }
+
+    private void ApplyPassiveEffect(PassiveItemData item)
+    {
+        switch (item.Name)
+        {
+            case "Speed":
+                CurrentMoveSpeed = item.BaseValue + item.Increment * item.Level;
+                break;
+            case "Magnet":
+                CurrentMagnet = item.BaseValue + item.Increment * item.Level;
+                break;
+            case "ProjectileSpeed":
+                CurrentProjectileSpeed = item.BaseValue + item.Increment * item.Level;
+                break;
+            case "Recovery":
+                CurrentRecovery = item.BaseValue + item.Increment * item.Level;
+                break;
+            case "Might":
+                CurrentMight = item.BaseValue + item.Increment * item.Level;
+                break;
+        }
+    }
+
+    /////////////////////////// level için eklenen kýsým
 }

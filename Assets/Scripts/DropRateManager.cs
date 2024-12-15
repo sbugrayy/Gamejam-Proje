@@ -35,7 +35,7 @@ public class DropRateManager : MonoBehaviour
             }
         }
     }
-
+    //// hata alýyor diye yorum satýrýna aldým aþaðýyý
     //void OnDestroy()
     //{
     //    float randomNumber = UnityEngine.Random.Range(0f, 100f);

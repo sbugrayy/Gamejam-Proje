@@ -1195,6 +1195,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSpeed: 300
+--- !u!1 &574779475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574779476}
+  m_Layer: 7
+  m_Name: TerlikController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &574779476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574779475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1819389419}
+  m_Father: {fileID: 1318389795}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2444,7 @@ Transform:
   - {fileID: 572292548}
   - {fileID: 1605442520}
   - {fileID: 214672738}
+  - {fileID: 574779476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1318389796
@@ -2490,6 +2523,7 @@ MonoBehaviour:
   - startLevel: 4
     endLevel: 5
     experienceCapIncrease: 200
+  passiveItems: []
 --- !u!1 &1449780860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +2881,7 @@ MonoBehaviour:
   chosenCharacterName: {fileID: 0}
   levelReachedDisplay: {fileID: 1148964954}
   timeSurvivedDisplay: {fileID: 2042322823}
-  timeLimit: 10
+  timeLimit: 75
   stopwatchDisplay: {fileID: 1449780863}
   pauseScreen: {fileID: 470776660}
   resultsScreen: {fileID: 1728011038}
@@ -3550,6 +3584,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6394242237111958692, guid: 5bf490bdbccfa5247b77808acd516c5c, type: 3}
   m_PrefabInstance: {fileID: 1812325218}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1819389418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819389419}
+  m_Layer: 7
+  m_Name: ProjectileShootFromPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819389419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819389418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 574779476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838201244
 GameObject:
   m_ObjectHideFlags: 0
