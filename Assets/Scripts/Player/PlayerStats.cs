@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 
 /// <summary>
@@ -150,6 +151,9 @@ public class PlayerStats : MonoBehaviour
         public int experienceCapIncrease;
     }
 
+    [Header("UI")]
+    public Image healthBar;
+
     [Header("I-Frames")]
     public float invicibilityDuration;
     float invicibilityTimer;
@@ -185,6 +189,8 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
         GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
         GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
+
+        UpdateHealthBar();
     }
 
     void Update()
@@ -241,7 +247,15 @@ public class PlayerStats : MonoBehaviour
             {
                 Kill();
             }
+
+            UpdateHealthBar();
         }
+    }
+
+    // Can barý güncelleniyor
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth / characterData.MaxHealth;
     }
 
     public void Kill()

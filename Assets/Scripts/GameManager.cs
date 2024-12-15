@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
                 if (!isGameOver)
                 {
                     isGameOver = true;
+                    Time.timeScale = 0f;
                     //Time.timeScale = 0f; // stop the game entirely
                     Debug.Log("GAME IS OVER");
                     DisplayResults();
