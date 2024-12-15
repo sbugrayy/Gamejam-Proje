@@ -17,7 +17,7 @@ public class EnemyStats : MonoBehaviour
     public Color damageColor = new Color(1, 0, 0, 1);
     public float damageFlashDuration = 0.2f;
     public float deathFadeTime = 0.6f;
-    Color originalColor;
+    Color Color1;
     SpriteRenderer sr;
     EnemyMovement movement;
     Rigidbody2D rb;
@@ -25,6 +25,7 @@ public class EnemyStats : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        Color1 = sr.color;
     }
     void Awake()
     {
@@ -37,20 +38,25 @@ public class EnemyStats : MonoBehaviour
         currentHealth -= dmg;
         StartCoroutine(DamageFlash());
         Vector2 dir = (player.position - transform.position).normalized;
-
-        rb.AddForce(dir * -knockbackForce, ForceMode2D.Impulse);
-
         if (currentHealth <= 0)
         {
             Kill();
         }
+        StartCoroutine(PusbackCooldown(dir, knockbackForce));
+    }
+    IEnumerator PusbackCooldown(Vector2 dir, float knockbackForce)
+    {
+        rb.AddForce(dir * -knockbackForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(damageFlashDuration);
+        rb.linearVelocity = Vector2.zero;
+
     }
     //çarpýþma anýnda kýrmýzý parlama metodu
     IEnumerator DamageFlash()
     {
         sr.color = damageColor;
         yield return new WaitForSeconds(damageFlashDuration);
-        sr.color = originalColor;
+        sr.color = Color1;
     }
     public void Kill()
     {
