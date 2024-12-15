@@ -11,5 +11,11 @@ public class RotatingTerlikBehavior : MonoBehaviour
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage, transform);
         }
+
+        if (col.CompareTag("Boss"))
+        {
+            BossStats enemy = col.GetComponent<BossStats>();
+            enemy.TakeDamage(currentDamage, transform);
+        }
     }
 }

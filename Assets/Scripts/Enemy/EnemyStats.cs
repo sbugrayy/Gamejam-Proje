@@ -1,9 +1,12 @@
 using System.Collections;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class EnemyStats : MonoBehaviour
 {
-    public EnemyScriptableObject enemyData;
+     public EnemyScriptableObject enemyData;
 
     //Current stats
     [HideInInspector]
@@ -21,11 +24,20 @@ public class EnemyStats : MonoBehaviour
     SpriteRenderer sr;
     EnemyMovement movement;
     Rigidbody2D rb;
+
+    [Header("UI")]
+    public Image healthBar;
+
+    [Header("events")]
+    public UnityEvent customevent;
+
     private void Start()
-    {
+    {  
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         Color1 = sr.color;
+
+        UpdateHealthBar();
     }
     void Awake()
     {
@@ -43,6 +55,14 @@ public class EnemyStats : MonoBehaviour
             Kill();
         }
         StartCoroutine(PusbackCooldown(dir, knockbackForce));
+
+        UpdateHealthBar();
+    }
+    
+    // Can barý güncelleniyor
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth / enemyData.MaxHealth;
     }
     IEnumerator PusbackCooldown(Vector2 dir, float knockbackForce)
     {
@@ -60,6 +80,7 @@ public class EnemyStats : MonoBehaviour
     }
     public void Kill()
     {
+        customevent.Invoke();
         Destroy(gameObject);
     }
 

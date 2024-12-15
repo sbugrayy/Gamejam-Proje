@@ -7,6 +7,7 @@ public class TerlikController : WeaponController
     private Transform player; // Oyuncu transformu
     private List<Transform> enemies = new List<Transform>(); // Düþmanlarýn listesi
     public Transform target; // Hedef transformu
+    protected float currentDamage;
 
     //Animasyon için
     public Color damageColor = new Color(1, 0, 0, 1);
@@ -29,9 +30,7 @@ public class TerlikController : WeaponController
 
     protected override void Update()
     {
-        /////////////////
         Vector2 dir = (player.position - transform.position).normalized;
-        /////////////////
 
         base.Attack();
     }
@@ -48,20 +47,38 @@ public class TerlikController : WeaponController
         yield return new WaitForSeconds(damageFlashDuration);
         sr.color = Color1;
     }
-    /// <summary>
-    /// ///////////////////////
-    /// </summary>
+
     public void TerlikThrow()
     {
-        // En yakýn düþmaný bul ve hedefi ona ata
+        // En yakýn düþmaný bul ve hedef olarak ata
         target = GetClosestEnemy();
 
         if (target != null)
         {
+            // Terliði fýrlatma iþlemi
             GameObject spawnedTerlik = Instantiate(weaponData.Prefab, transform.position, Quaternion.identity);
             spawnedTerlik.GetComponent<TerlikBehaviour>().DirectionChecker((target.position - transform.position).normalized);
+
+            // Zaman gecikmesiyle TakeDamage metodunu Invoke et
+            Invoke("Attack", 0.5f); // 0.5 saniye gecikmeyle hasar ver
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D col)
+    //{
+    //    if (col.CompareTag("Enemy"))
+    //    {
+    //        EnemyStats enemy = col.GetComponent<EnemyStats>();
+    //        enemy.TakeDamage(currentDamage, transform);
+    //    }
+
+    //    if (col.CompareTag("Boss"))
+    //    {
+    //        BossStats enemy = col.GetComponent<BossStats>();
+    //        enemy.TakeDamage(currentDamage, transform);
+    //    }
+    //}
+
 
     public void AddEnemy(Transform newEnemy)
     {

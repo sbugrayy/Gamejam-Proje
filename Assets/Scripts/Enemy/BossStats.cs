@@ -1,10 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class BossStats : MonoBehaviour
 {
-    public EnemyScriptableObject enemyData;
+    public EnemyScriptableObject bossData;
 
     //Current stats
     [HideInInspector]
@@ -22,6 +24,12 @@ public class BossStats : MonoBehaviour
     SpriteRenderer sr;
     EnemyMovement movement;
     Rigidbody2D rb;
+
+    [Header("UI")]
+    public Image healthBar;
+    [Header("events")]
+    public UnityEvent customevent;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,9 +38,9 @@ public class BossStats : MonoBehaviour
     }
     void Awake()
     {
-        currentMoveSpeed = enemyData.MoveSpeed;
-        currentHealth = enemyData.MaxHealth;
-        currentDamage = enemyData.Damage;
+        currentMoveSpeed = bossData.MoveSpeed;
+        currentHealth = bossData.MaxHealth;
+        currentDamage = bossData.Damage;
     }
     public void TakeDamage(float dmg, Transform player, float knockbackForce = 3f, float knockbackDuration = 0.2f)
     {
@@ -44,6 +52,14 @@ public class BossStats : MonoBehaviour
             Kill();
         }
         StartCoroutine(PusbackCooldown(dir, knockbackForce));
+
+        UpdateHealthBar();
+    }
+
+    // Can barý güncelleniyor
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth / bossData.MaxHealth;
     }
     IEnumerator PusbackCooldown(Vector2 dir, float knockbackForce)
     {
@@ -61,6 +77,7 @@ public class BossStats : MonoBehaviour
     }
     public void Kill()
     {
+        customevent.Invoke();
         Destroy(gameObject);
     }
 
