@@ -185,11 +185,6 @@ public class PlayerStats : MonoBehaviour
         //Set the current stats display
         GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
         GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
-        GameManager.instance.currentMoveSpeedDisplay.text = "MoveSpeed: " + currentMoveSpeed;
-        GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
-        GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
-        GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
-
         UpdateHealthBar();
     }
 
