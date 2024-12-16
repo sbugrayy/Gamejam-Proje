@@ -81,7 +81,8 @@ public class EnemyStats : MonoBehaviour
     public void Kill()
     {
         customevent.Invoke();
-        Destroy(gameObject);
+        
+        Destroy(gameObject,0.20f);
     }
 
     // Çarpýþmayý algýlar
