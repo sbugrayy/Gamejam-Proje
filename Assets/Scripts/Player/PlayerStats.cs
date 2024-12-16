@@ -4,10 +4,9 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-
-/// <summary>
-/// //////////////////// level için eklenen kýsým
-/// </summary>
+using UnityEngine.Events;
+using Unity.VisualScripting;
+using System.Collections;
 
 [System.Serializable]
 public class PassiveItemData
@@ -19,12 +18,12 @@ public class PassiveItemData
     public float Increment;
 }
 
-/// <summary>
-/// ///////////////////////// level için eklenen kýsým
-/// </summary>
-
 public class PlayerStats : MonoBehaviour
 {
+
+    [Header("events")]
+    public UnityEvent customevent;
+
     public CharacterScriptableObject characterData;
 
     //Current stats
@@ -39,96 +38,96 @@ public class PlayerStats : MonoBehaviour
     public float CurrentHealth
     {
         get { return currentHealth; }
-        set 
-        { 
-            if (currentHealth != value) 
-            { 
+        set
+        {
+            if (currentHealth != value)
+            {
                 currentHealth = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
                 }
-            } 
+            }
         }
     }
 
     public float CurrentRecovery
     {
         get { return currentRecovery; }
-        set 
-        { 
-            if (currentRecovery != value) 
-            { 
+        set
+        {
+            if (currentRecovery != value)
+            {
                 currentRecovery = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
                 }
-            } 
+            }
         }
     }
 
     public float CurrentMoveSpeed
     {
         get { return currentMoveSpeed; }
-        set 
-        { 
-            if (currentMoveSpeed != value) 
-            { 
+        set
+        {
+            if (currentMoveSpeed != value)
+            {
                 currentMoveSpeed = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
                 }
-            } 
+            }
         }
     }
 
     public float CurrentMight
     {
         get { return currentMight; }
-        set 
-        { 
-            if (currentMight != value) 
-            { 
+        set
+        {
+            if (currentMight != value)
+            {
                 currentMight = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
                 }
-            } 
+            }
         }
     }
 
     public float CurrentProjectileSpeed
     {
         get { return currentProjectileSpeed; }
-        set 
-        { 
-            if (currentProjectileSpeed != value) 
-            { 
+        set
+        {
+            if (currentProjectileSpeed != value)
+            {
                 currentProjectileSpeed = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
                 }
-            } 
+            }
         }
     }
 
     public float CurrentMagnet
     {
         get { return currentMagnet; }
-        set 
-        { 
-            if (currentMagnet != value) 
-            { 
+        set
+        {
+            if (currentMagnet != value)
+            {
                 currentMagnet = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
                 }
-            } 
+            }
         }
     }
     #endregion
@@ -141,6 +140,7 @@ public class PlayerStats : MonoBehaviour
     public int experience = 0;
     public int level = 1;
     public int experienceCap;
+    public bool isDead;
 
     //class for defining a level range and the corresponding cap increase for that range
     [System.Serializable]
@@ -243,9 +243,15 @@ public class PlayerStats : MonoBehaviour
             invicibilityTimer = invicibilityDuration;
             isInvincible = true;
 
-            if (CurrentHealth <= 0)
+            //if (CurrentHealth <= 0 )
+            //{
+            //    Kill();
+            //}
+
+
+            if (CurrentHealth <= 0 && !isDead)
             {
-                Kill();
+                StartCoroutine(Kill());
             }
 
             UpdateHealthBar();
@@ -258,22 +264,39 @@ public class PlayerStats : MonoBehaviour
         healthBar.fillAmount = currentHealth / characterData.MaxHealth;
     }
 
-    public void Kill()
+    //public void Kill()
+    //{
+    //    customevent.Invoke();
+
+    //    Destroy(gameObject, 0.20f);
+    //    if (!GameManager.instance.isGameOver)
+    //    {
+    //        GameManager.instance.AssignLevelReachedUI(level);
+    //        GameManager.instance.GameOver();
+    //    }
+    //}
+
+    public IEnumerator Kill()
     {
+        isDead = true;
+        customevent.Invoke();
+        yield return new WaitForSeconds(.4f);
+
+       // Destroy(gameObject);
+        print("absdbj");
         if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
             GameManager.instance.GameOver();
         }
     }
-
     public void RestoreHealth(float amount)
     {
-        if(CurrentHealth < characterData.MaxHealth)
+        if (CurrentHealth < characterData.MaxHealth)
         {
             CurrentHealth += amount;
 
-            if(CurrentHealth > characterData.MaxHealth)
+            if (CurrentHealth > characterData.MaxHealth)
             {
                 CurrentHealth = characterData.MaxHealth;
             }
@@ -282,11 +305,11 @@ public class PlayerStats : MonoBehaviour
 
     void Recover()
     {
-        if(CurrentHealth < characterData.MaxHealth)
+        if (CurrentHealth < characterData.MaxHealth)
         {
             CurrentHealth += currentRecovery * Time.deltaTime;
 
-            if(CurrentHealth > characterData.MaxHealth)
+            if (CurrentHealth > characterData.MaxHealth)
             {
                 CurrentHealth = characterData.MaxHealth;
             }
@@ -338,6 +361,4 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
-
-    /////////////////////////// level için eklenen kýsým
 }

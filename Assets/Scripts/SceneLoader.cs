@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     public void OnButtonPress()
     {
         audioSource.Play();
-        Invoke("LoadScene", 1f);
+        Invoke("LoadScene", 0.8f);
     }
     //Used in invoke
     private void LoadScene()

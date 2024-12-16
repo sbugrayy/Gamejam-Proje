@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
                 if (!isGameOver)
                 {
                     isGameOver = true;
+                    Invoke("", 0.25f);
                     Time.timeScale = 0f;
-                    //Time.timeScale = 0f; // stop the game entirely
                     Debug.Log("GAME IS OVER");
                     DisplayResults();
                 }
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game is resumed");
         }
     }
-
+    
     void CheckForPauseAndResume()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
